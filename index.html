@@ -19,9 +19,9 @@
   .stage{{position:relative;flex:1;min-height:0;background:var(--paper);overflow:auto}}
   .stage iframe{{display:block;border:0;width:100%;min-width:100%;height:100%;background:var(--paper)}}
   .stage.mobile iframe{{width:390px;min-width:390px;height:844px;margin:0 auto}}
-  .watermarks{{position:absolute;inset:0;z-index:10;overflow:hidden;pointer-events:none;user-select:none}}
-  .watermarks>div{{position:absolute;inset:-50%;rotate:-24deg;display:flex;flex-wrap:wrap;align-content:center;justify-content:center;column-gap:260px;row-gap:170px}}
-  .watermarks span{{color:var(--paper);font-size:19px;font-weight:600;letter-spacing:-0.01em;line-height:28.5px;opacity:.09;white-space:nowrap}}
+  }
+  }
+  }
   @media(max-width:767px){{.segment{{display:none}}}}
 </style>
 </head>
@@ -41,13 +41,10 @@
   </header>
   <div class="stage" id="stage">
     <iframe id="preview" src="render.html" title="Vihaan &amp; Meera — Sheesh Mahal — preview"></iframe>
-    <div class="watermarks"><div id="wmGrid"></div></div>
+    
   </div>
 </div>
 <script>
-  const grid=document.getElementById('wmGrid'),frag=document.createDocumentFragment();
-  for(let i=0;i<200;i++){{const s=document.createElement('span');s.textContent='HappyInvitee';frag.appendChild(s)}}
-  grid.appendChild(frag);
   const stage=document.getElementById('stage'),frame=document.getElementById('preview'),desktop=document.getElementById('desktopBtn'),mobile=document.getElementById('mobileBtn');
   document.getElementById('reload').addEventListener('click',()=>{{frame.src='render.html?'+Date.now()}});
   desktop.addEventListener('click',()=>{{desktop.setAttribute('aria-pressed','true');mobile.setAttribute('aria-pressed','false');stage.classList.remove('mobile')}});
